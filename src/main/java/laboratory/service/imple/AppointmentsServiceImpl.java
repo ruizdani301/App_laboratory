@@ -33,10 +33,8 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 
 	@Override
 	public List<Appointment> getList() {
-		List<Appointment> listAll = StreamSupport.stream(this.appointmentsRepository.findAll().spliterator(), false)
-			.collect(Collectors.toList());
-
-		return listAll;
+		return StreamSupport.stream(this.appointmentsRepository.findAll().spliterator(), false)
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -46,8 +44,8 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 
 	@Override
 	public List<Appointment> getByAffiliate(Affiliate affiliate) {
-		List<Appointment> appointments = this.appointmentsRepository.findByIdAffiliateOrderByDateAsc(affiliate);
-		return appointments;
+		return this.appointmentsRepository.findByIdAffiliateOrderByDateAsc(affiliate);
+		
 	}
 
 	@Override
@@ -80,8 +78,8 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	@Override
 	public List<Appointment> getByDate(String date) {
 		LocalDate value = LocalDate.parse(date);
-		List<Appointment> appointments = this.appointmentsRepository.findByDateOrderByIdAffiliateAsc(value);
-		return appointments;
+		return this.appointmentsRepository.findByDateOrderByIdAffiliateAsc(value);
+		
 	}
 
 }

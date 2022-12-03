@@ -37,13 +37,11 @@ public class AffiliatesServiceImple implements AffiliatesService {
 
 	@Override
 	public Affiliate getById(Long id) {
-
 		return this.affiliatesRepository.findById(id).get();
 	}
 
 	@Override
 	public Affiliate post(Affiliate affiliate) {
-
 		return this.affiliatesRepository.save(affiliate);
 	}
 

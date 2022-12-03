@@ -31,10 +31,8 @@ public class TestsServiceImple implements TestsService {
 
 	@Override
 	public List<TestLab> getList() {
-		List<TestLab> listAll = StreamSupport.stream(this.testRepository.findAll().spliterator(), false)
+		return StreamSupport.stream(this.testRepository.findAll().spliterator(), false)
 				.collect(Collectors.toList());
-
-		return listAll;
 	}
 
 	@Override
@@ -44,7 +42,6 @@ public class TestsServiceImple implements TestsService {
 
 	@Override
 	public TestLab post(TestLab test) {
-
 		return this.testRepository.save(test);
 	}
 
