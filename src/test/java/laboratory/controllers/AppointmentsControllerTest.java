@@ -37,7 +37,7 @@ class AppointmentsControllerTest {
 		
 		@Test
 		void listall_ReturnStatus204_whenListReturnedIsEmpty() {
-			when(appoServiceMock.getlist()).thenReturn(Collections.emptyList());
+			when(appoServiceMock.getList()).thenReturn(Collections.emptyList());
 			var response = appoController.appointmentsList();
 			Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 		}
@@ -45,27 +45,27 @@ class AppointmentsControllerTest {
 		void listall_ReturnStatus200_whenListReturnedIsEmpty() {
 			var list = new ArrayList<Appointment>();
 			list.add(new Appointment());
-			when(appoServiceMock.getlist()).thenReturn(list);
+			when(appoServiceMock.getList()).thenReturn(list);
 			var response = appoController.appointmentsList();
 			Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 		}
 		@Test
-		void listbyid_Return404_whenNotFoundContent() {
-			when(appoServiceMock.getbyid(anyLong())).thenReturn(null);
-			var response = appoController.objbyid(anyLong());
+		void listById_Return404_whenNotFoundContent() {
+			when(appoServiceMock.getById(anyLong())).thenReturn(null);
+			var response = appoController.objById(anyLong());
 			Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 		}
 		@Test
-		void listbyid_Return200_whenFoundContent() {
-			when(appoServiceMock.getbyid(anyLong())).thenReturn(new Appointment());
-			var response = appoController.objbyid(anyLong());
+		void listById_Return200_whenFoundContent() {
+			when(appoServiceMock.getById(anyLong())).thenReturn(new Appointment());
+			var response = appoController.objById(anyLong());
 			Assertions.assertEquals(HttpStatus.OK , response.getStatusCode());
 		}
 		
 		@Test
-		void listbyid_throwException_404_whenNotFoundContent() {
-			doThrow(new RuntimeException()).when(appoServiceMock).getbyid(null);
-			var response = appoController.objbyid(anyLong());
+		void listById_throwException_404_whenNotFoundContent() {
+			doThrow(new RuntimeException()).when(appoServiceMock).getById(null);
+			var response = appoController.objById(anyLong());
 			Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 		}
 		
@@ -99,37 +99,37 @@ class AppointmentsControllerTest {
 		}
 		
 		@Test 
-		void getbyAffiliate_ReturnStatus200_whenReturnAppointmentLIst() {
+		void getByAffiliate_ReturnStatus200_whenReturnAppointmentLIst() {
 			List<Appointment> sample = new ArrayList<Appointment>();
 			sample.add(new Appointment());
 			var affiliate = new Affiliate();
-			when(appoServiceMock.getbyaffiliate(affiliate)).thenReturn(sample);
+			when(appoServiceMock.getByAffiliate(affiliate)).thenReturn(sample);
 			var response =  appoController.listAffiliates(affiliate);
 			Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 		}
 		
 		@Test 
-		void getbyAffiliate_ReturnStatus204_whenReturnAppointmentLIst() {
+		void getByAffiliate_ReturnStatus204_whenReturnAppointmentLIst() {
 			var affiliate = new Affiliate();
-			when(appoServiceMock.getbyaffiliate(affiliate)).thenReturn(Collections.emptyList());
+			when(appoServiceMock.getByAffiliate(affiliate)).thenReturn(Collections.emptyList());
 			var response =  appoController.listAffiliates(affiliate);
 			Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 		}
 		
 		@Test 
-		void getbyDate_ReturnStatus200_whenReturnAppointmentLIst() {
+		void getByDate_ReturnStatus200_whenReturnAppointmentLIst() {
 			var valu = new String();
 			List<Appointment> listAppo = new ArrayList<Appointment>();
 			listAppo.add(new Appointment());
-			when(appoServiceMock.getbyDate(valu)).thenReturn(listAppo);
+			when(appoServiceMock.getByDate(valu)).thenReturn(listAppo);
 			var response =  appoController.listGroup(valu);
 			Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 		}
 		
 		@Test 
-		void getbyDate_ReturnStatus204_whenNotReturnAppointmentLIst() {
+		void getByDate_ReturnStatus204_whenNotReturnAppointmentLIst() {
 			var valu = new String();
-			when(appoServiceMock.getbyDate(valu)).thenReturn(Collections.emptyList());
+			when(appoServiceMock.getByDate(valu)).thenReturn(Collections.emptyList());
 			var response =  appoController.listGroup(valu);
 			Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 		}

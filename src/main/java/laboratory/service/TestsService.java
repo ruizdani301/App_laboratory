@@ -20,7 +20,7 @@ public interface TestsService {
 	 * 
 	 * @return tests List
 	 */
-	List<TestLab> getlist();
+	List<TestLab> getList();
 
 	/**
 	 * method that allows queries the list of tests
@@ -28,7 +28,7 @@ public interface TestsService {
 	 * @param test {@link int} test object to get
 	 * @return tests object
 	 */
-	TestLab getbyid(Long id);
+	TestLab getById(Long id);
 
 	/**
 	 * method that save the tests

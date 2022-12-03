@@ -23,7 +23,7 @@ public interface AppointmentsService {
 	 * 
 	 * @return appoinments List
 	 */
-	List<Appointment> getlist();
+	List<Appointment> getList();
 
 	/**
 	 * method that allows queries the list of appointments
@@ -31,7 +31,7 @@ public interface AppointmentsService {
 	 * @param appointment {@link int} appointment object to get
 	 * @return appointment object
 	 */
-	Appointment getbyid(Long id);
+	Appointment getById(Long id);
 
 	/**
 	 * method that allows queries the list of appointments of one affiliate
@@ -39,7 +39,7 @@ public interface AppointmentsService {
 	 * @param affiliate {@link Affiliate} appointment object to get
 	 * @return appointment object
 	 */
-	List<Appointment> getbyaffiliate(Affiliate affiliate);
+	List<Appointment> getByAffiliate(Affiliate affiliate);
 
 	/**
 	 * method that allows queries the list of appointments of one affiliate
@@ -47,7 +47,7 @@ public interface AppointmentsService {
 	 * @param date {@link Appointment} appointment object to get
 	 * @return appointment object
 	 */
-	List<Appointment> getbyDate(String date);
+	List<Appointment> getByDate(String date);
 
 	/**
 	 * method that save the appoinment

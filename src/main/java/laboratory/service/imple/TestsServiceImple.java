@@ -30,7 +30,7 @@ public class TestsServiceImple implements TestsService {
 	private TestsReporsitory testRepository;
 
 	@Override
-	public List<TestLab> getlist() {
+	public List<TestLab> getList() {
 		List<TestLab> listAll = StreamSupport.stream(this.testRepository.findAll().spliterator(), false)
 				.collect(Collectors.toList());
 
@@ -38,7 +38,7 @@ public class TestsServiceImple implements TestsService {
 	}
 
 	@Override
-	public TestLab getbyid(Long id) {
+	public TestLab getById(Long id) {
 		return this.testRepository.findById(id).get();
 	}
 

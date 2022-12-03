@@ -21,7 +21,7 @@ public interface AffiliatesService {
 	 * 
 	 * @return affiliates List
 	 */
-	List<Affiliate> getlist();
+	List<Affiliate> getList();
 
 	/**
 	 * method that allows queries the list of tests
@@ -29,7 +29,7 @@ public interface AffiliatesService {
 	 * @param affiliate {@link int} affiliate object to get
 	 * @return affiliate object
 	 */
-	Affiliate getbyid(Long id);
+	Affiliate getById(Long id);
 
 	/**
 	 * method that save the affiliate

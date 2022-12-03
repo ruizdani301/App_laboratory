@@ -1,9 +1,6 @@
 package laboratory.controllers;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
@@ -36,7 +33,7 @@ class AffiliatesControllerTest {
 	
 	@Test
 	void listall_ReturnStatus204_whenListReturnedIsEmpty() {
-		when(affiliateServiceMock.getlist()).thenReturn(Collections.emptyList());
+		when(affiliateServiceMock.getList()).thenReturn(Collections.emptyList());
 		var response = affiliateControler.affiliatesList();
 		Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 	}
@@ -44,26 +41,26 @@ class AffiliatesControllerTest {
 	void listall_ReturnStatus200_whenListReturnedIsEmpty() {
 		var list = new ArrayList<Affiliate>();
 		list.add(new Affiliate());
-		when(affiliateServiceMock.getlist()).thenReturn(list);
+		when(affiliateServiceMock.getList()).thenReturn(list);
 		var response = affiliateControler.affiliatesList();
 		Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 	@Test
 	void listbyid_Return404_whenNotFoundContent() {
-		when(affiliateServiceMock.getbyid(anyLong())).thenReturn(null);
+		when(affiliateServiceMock.getById(anyLong())).thenReturn(null);
 		var response = affiliateControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 	}
 	@Test
 	void listbyid_Return200_whenFoundContent() {
-		when(affiliateServiceMock.getbyid(anyLong())).thenReturn(new Affiliate());
+		when(affiliateServiceMock.getById(anyLong())).thenReturn(new Affiliate());
 		var response = affiliateControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.OK , response.getStatusCode());
 	}
 	
 	@Test
 	void listbyid_throwException_404_whenNotFoundContent() {
-		doThrow(new RuntimeException()).when(affiliateServiceMock).getbyid(null);
+		doThrow(new RuntimeException()).when(affiliateServiceMock).getById(null);
 		var response = affiliateControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 	}

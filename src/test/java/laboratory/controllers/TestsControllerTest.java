@@ -1,6 +1,5 @@
 package laboratory.controllers;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
@@ -17,14 +16,11 @@ import org.springframework.http.HttpStatus;
 
 
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.http.HttpStatus;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 
 import laboratory.entity.TestLab;
-import laboratory.service.TestsService;
 import laboratory.service.imple.TestsServiceImple;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,7 +36,7 @@ class TestsControllerTest {
 		
 	@Test
 	void listall_ReturnStatus204_whenListReturnedIsEmpty() {
-		when(testServiceMock.getlist()).thenReturn(Collections.emptyList());
+		when(testServiceMock.getList()).thenReturn(Collections.emptyList());
 		var response = testControler.testList();
 		Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 	}
@@ -48,26 +44,26 @@ class TestsControllerTest {
 	void listall_ReturnStatus200_whenListReturnedIsEmpty() {
 		var list = new ArrayList<TestLab>();
 		list.add(new TestLab());
-		when(testServiceMock.getlist()).thenReturn(list);
+		when(testServiceMock.getList()).thenReturn(list);
 		var response = testControler.testList();
 		Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 	@Test
 	void listbyid_Return404_whenNotFoundContent() {
-		when(testServiceMock.getbyid(anyLong())).thenReturn(null);
+		when(testServiceMock.getById(anyLong())).thenReturn(null);
 		var response =testControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 	}
 	@Test
 	void listbyid_Return200_whenFoundContent() {
-		when(testServiceMock.getbyid(anyLong())).thenReturn(new TestLab());
+		when(testServiceMock.getById(anyLong())).thenReturn(new TestLab());
 		var response = testControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.OK , response.getStatusCode());
 	}
 	
 	@Test
 	void listbyid_Return_404_whenNotFoundContent() {
-		doThrow(new RuntimeException()).when(testServiceMock).getbyid(null);
+		doThrow(new RuntimeException()).when(testServiceMock).getById(null);
 		var response =testControler.objbyid(anyLong());
 		Assertions.assertEquals(HttpStatus.NOT_FOUND , response.getStatusCode());
 	}

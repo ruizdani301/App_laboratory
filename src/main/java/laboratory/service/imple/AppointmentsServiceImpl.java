@@ -32,21 +32,20 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	private AppointmentsRepository appointmentsRepository;
 
 	@Override
-	public List<Appointment> getlist() {
-		// due to return a iterable is necessary use this code
+	public List<Appointment> getList() {
 		List<Appointment> listAll = StreamSupport.stream(this.appointmentsRepository.findAll().spliterator(), false)
-				.collect(Collectors.toList());
+			.collect(Collectors.toList());
 
 		return listAll;
 	}
 
 	@Override
-	public Appointment getbyid(Long id) {
+	public Appointment getById(Long id) {
 		return this.appointmentsRepository.findById(id).get();
 	}
 
 	@Override
-	public List<Appointment> getbyaffiliate(Affiliate affiliate) {
+	public List<Appointment> getByAffiliate(Affiliate affiliate) {
 		List<Appointment> appointments = this.appointmentsRepository.findByIdAffiliateOrderByDateAsc(affiliate);
 		return appointments;
 	}
@@ -79,7 +78,7 @@ public class AppointmentsServiceImpl implements AppointmentsService {
 	}
 
 	@Override
-	public List<Appointment> getbyDate(String date) {
+	public List<Appointment> getByDate(String date) {
 		LocalDate value = LocalDate.parse(date);
 		List<Appointment> appointments = this.appointmentsRepository.findByDateOrderByIdAffiliateAsc(value);
 		return appointments;

@@ -27,7 +27,7 @@ public class TestsController {
 
 	@GetMapping(value = "listall")
 	public ResponseEntity<?> testList() {
-		List<TestLab> testFound = this.testsServiceImple.getlist();
+		List<TestLab> testFound = this.testsServiceImple.getList();
 		if (testFound.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		} else {
@@ -38,7 +38,7 @@ public class TestsController {
 	@GetMapping(value = "getone/{id}")
 	public ResponseEntity<?> objbyid(@PathVariable Long id) {
 		try {
-			TestLab elembyid = this.testsServiceImple.getbyid(id);
+			TestLab elembyid = this.testsServiceImple.getById(id);
 			if (elembyid == null) {
 				return ResponseEntity.notFound().build();
 			}

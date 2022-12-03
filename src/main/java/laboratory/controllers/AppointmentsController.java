@@ -29,7 +29,7 @@ public class AppointmentsController {
 
 	@GetMapping(value = "listall")
 	public ResponseEntity<?> appointmentsList() {
-		List<Appointment> appoinmentsFound = this.appointmentsServiceImpl.getlist();
+		List<Appointment> appoinmentsFound = this.appointmentsServiceImpl.getList();
 		if (appoinmentsFound.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		} else {
@@ -38,9 +38,9 @@ public class AppointmentsController {
 	}
 
 	@GetMapping(value = "getone/{id}")
-	public ResponseEntity<?> objbyid(@PathVariable Long id) {
+	public ResponseEntity<?> objById(@PathVariable Long id) {
 		try {
-			Appointment elembyid = this.appointmentsServiceImpl.getbyid(id);
+			Appointment elembyid = this.appointmentsServiceImpl.getById(id);
 			if (elembyid == null) {
 				return ResponseEntity.notFound().build();
 			} else {
@@ -84,7 +84,7 @@ public class AppointmentsController {
 
 	@GetMapping(value = "affiliates/{idAffiliate}")
 	public ResponseEntity<?> listAffiliates(@PathVariable Affiliate idAffiliate) {
-		List<Appointment> affiliateFound = this.appointmentsServiceImpl.getbyaffiliate(idAffiliate);
+		List<Appointment> affiliateFound = this.appointmentsServiceImpl.getByAffiliate(idAffiliate);
 		if (affiliateFound.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		} else {
@@ -94,7 +94,7 @@ public class AppointmentsController {
 
 	@GetMapping(value = "group/{date}")
 	public ResponseEntity<?> listGroup(@PathVariable String date) {
-		List<Appointment> groupFound = this.appointmentsServiceImpl.getbyDate(date);
+		List<Appointment> groupFound = this.appointmentsServiceImpl.getByDate(date);
 		if (groupFound.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		} else {

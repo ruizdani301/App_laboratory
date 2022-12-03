@@ -36,7 +36,7 @@ public class AffiliatesController {
 
 	@GetMapping(value = "listall")
 	public ResponseEntity<?> affiliatesList() {
-		List<Affiliate> affiliatesFound = this.affiliatesServiceImple.getlist();
+		List<Affiliate> affiliatesFound = this.affiliatesServiceImple.getList();
 		if (affiliatesFound.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		} else {
@@ -47,7 +47,7 @@ public class AffiliatesController {
 	@GetMapping(value = "getone/{id}")
 	public ResponseEntity<?> objbyid(@PathVariable Long id) {
 		try {
-			Affiliate elembyid = this.affiliatesServiceImple.getbyid(id);
+			Affiliate elembyid = this.affiliatesServiceImple.getById(id);
 			if (elembyid == null) {
 				return ResponseEntity.notFound().build();
 			}

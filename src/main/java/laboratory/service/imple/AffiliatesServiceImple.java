@@ -27,7 +27,7 @@ public class AffiliatesServiceImple implements AffiliatesService {
 	private AffiliatesRepository affiliatesRepository;
 
 	@Override
-	public List<Affiliate> getlist() {
+	public List<Affiliate> getList() {
 		// due to return a iterable is necessary use this code
 		List<Affiliate> listAll = StreamSupport.stream(this.affiliatesRepository.findAll().spliterator(), false)
 				.collect(Collectors.toList());
@@ -36,7 +36,7 @@ public class AffiliatesServiceImple implements AffiliatesService {
 	}
 
 	@Override
-	public Affiliate getbyid(Long id) {
+	public Affiliate getById(Long id) {
 
 		return this.affiliatesRepository.findById(id).get();
 	}
