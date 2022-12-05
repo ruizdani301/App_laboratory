@@ -21,7 +21,7 @@ import laboratory.service.AppointmentsService;
  */
 
 @RestController
-@RequestMapping("/api/controller/appointment")
+@RequestMapping("/api/controller/appointments")
 public class AppointmentsController {
 
 	@Autowired

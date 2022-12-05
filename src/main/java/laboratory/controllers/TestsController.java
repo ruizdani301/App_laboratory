@@ -19,7 +19,7 @@ import laboratory.service.imple.TestsServiceImple;
  * Controller that handles the flow of the Tests rest services.
  */
 @RestController
-@RequestMapping("/api/controller/test")
+@RequestMapping("/api/controller/tests")
 public class TestsController {
 
 	@Autowired

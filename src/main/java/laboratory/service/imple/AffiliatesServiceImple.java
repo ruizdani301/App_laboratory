@@ -28,11 +28,9 @@ public class AffiliatesServiceImple implements AffiliatesService {
 
 	@Override
 	public List<Affiliate> getList() {
-		// due to return a iterable is necessary use this code
-		List<Affiliate> listAll = StreamSupport.stream(this.affiliatesRepository.findAll().spliterator(), false)
+		return StreamSupport.stream(this.affiliatesRepository.findAll().spliterator(), false)
 				.collect(Collectors.toList());
 
-		return listAll;
 	}
 
 	@Override
