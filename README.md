@@ -21,38 +21,38 @@
        
    ## to run the crud on table "test" the following paths are used
 #### method GET
-- /api/controller/test/listall
-- /api/controller/test/getone/{id}
+- /api/controller/test - Return a test list
+- /api/controller/test/{id} - Return a specific test
 #### method post
-- /api/controller/test/add
+- /api/controller/test
 #### method put
-- /api/controller/test/update/{id}
+- /api/controller/test/{id}
 #### method delete
-- /api/controller/test/delete/{id}
+- /api/controller/test/{id}
 
  ## to run the crud on table "affiliates" the following paths are used
 #### method GET
-- /api/controller/affiliate/listall
-- /api/controller/affiliate/getone/{id}
+- /api/controller/affiliate -  Return a affiliate list
+- /api/controller/affiliate/{id} -  Return a specific affiliate
 #### method post
-- /api/controller/affiliate/add
+- /api/controller/affiliate/
 #### method put
-- /api/controller/affiliate/update/{id}
+- /api/controller/affiliate/{id}
 #### method delete
-- /api/controller/affiliate/delete/{id}
+- /api/controller/affiliate/{id}
 
  ## to run the crud on table "appointments" the following paths are used
 #### method GET
-- /api/controller/appointment/listall
-- /api/controller/appointment/getone/{id}
-- /api/controller/appointment/affiliates/{id} - Return all the appointments of one affiliate
+- /api/controller/appointment/ -  Return a appointment list 
+- /api/controller/appointment/{id} - Return a specific appointment
+- /api/controller/appointment/affiliates/{id} - Return all the appointments of one affiliate 
 - /api/controller/appointment/group/{DATE} - Return all the affiliates with an appointments in specific date
 #### method post
-- /api/controller/appointment/add
+- /api/controller/appointment
 #### method put
-- /api/controller/appointment/update/{id}
+- /api/controller/appointment/{id}
 #### method delete
-- /api/controller/appointment/delete/{id}
+- /api/controller/appointment/{id}
       
   ### technologies
       in ubuntu 22.04
