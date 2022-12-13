@@ -25,7 +25,7 @@ public class TestsController {
 	@Autowired
 	private TestsServiceImple testsServiceImple;
 
-	@GetMapping(value = "listall")
+	@GetMapping
 	public ResponseEntity<?> testList() {
 		List<TestLab> testFound = this.testsServiceImple.getList();
 		if (testFound.isEmpty()) {
@@ -35,7 +35,7 @@ public class TestsController {
 		}
 	}
 
-	@GetMapping(value = "getone/{id}")
+	@GetMapping(value = "{id}")
 	public ResponseEntity<?> objbyid(@PathVariable Long id) {
 		try {
 			TestLab elembyid = this.testsServiceImple.getById(id);
@@ -48,7 +48,7 @@ public class TestsController {
 		}
 	}
 
-	@PostMapping(value = "add")
+	@PostMapping
 	public ResponseEntity<?> postTest(@RequestBody TestLab test) {
 		try {
 			TestLab affiliateSaved = this.testsServiceImple.post(test);
@@ -58,7 +58,7 @@ public class TestsController {
 		}
 	}
 
-	@PutMapping(value = "update")
+	@PutMapping
 	public ResponseEntity<?> putTest(@RequestBody TestLab test) {
 
 		Optional<TestLab> testUpdated = this.testsServiceImple.put(test);
@@ -70,7 +70,7 @@ public class TestsController {
 
 	}
 
-	@DeleteMapping(value = "delete/{id}")
+	@DeleteMapping(value = "{id}")
 	public ResponseEntity<?> deleteTest(@PathVariable Long id) {
 		try {
 			this.testsServiceImple.delete(id);

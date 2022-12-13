@@ -27,7 +27,7 @@ public class AppointmentsController {
 	@Autowired
 	private AppointmentsService appointmentsServiceImpl;
 
-	@GetMapping(value = "listall")
+	@GetMapping
 	public ResponseEntity<?> appointmentsList() {
 		List<Appointment> appoinmentsFound = this.appointmentsServiceImpl.getList();
 		if (appoinmentsFound.isEmpty()) {
@@ -37,7 +37,7 @@ public class AppointmentsController {
 		}
 	}
 
-	@GetMapping(value = "getone/{id}")
+	@GetMapping(value = "{id}")
 	public ResponseEntity<?> objById(@PathVariable Long id) {
 		try {
 			Appointment elembyid = this.appointmentsServiceImpl.getById(id);
@@ -52,7 +52,7 @@ public class AppointmentsController {
 
 	}
 
-	@PostMapping(value = "add")
+	@PostMapping
 	public ResponseEntity<?> postAppo(@RequestBody Appointment appointment) {
 		try {
 			Appointment appointmentSaved = this.appointmentsServiceImpl.post(appointment);
@@ -62,7 +62,7 @@ public class AppointmentsController {
 		}
 	}
 
-	@PutMapping(value = "update")
+	@PutMapping
 	public ResponseEntity<?> putAppo(@RequestBody Appointment appointment) {
 		Optional<Appointment> appoUpdated = this.appointmentsServiceImpl.put(appointment);
 		if (appoUpdated.isEmpty()) {
@@ -72,7 +72,7 @@ public class AppointmentsController {
 		}
 	}
 
-	@DeleteMapping(value = "delete/{id}")
+	@DeleteMapping(value = "{id}")
 	public ResponseEntity<?> deleteAppo(@PathVariable Long id) {
 		try {
 			this.appointmentsServiceImpl.delete(id);

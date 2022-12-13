@@ -60,6 +60,7 @@ public class AffiliatesServiceImple implements AffiliatesService {
 
 	@Override
 	public void delete(Long id) {
+		System.out.println("etapa 2");
 		this.affiliatesRepository.deleteById(id);
 
 	}

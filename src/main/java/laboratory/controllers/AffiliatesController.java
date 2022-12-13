@@ -34,7 +34,7 @@ public class AffiliatesController {
 	@Autowired
 	private AffiliatesService affiliatesServiceImple;
 
-	@GetMapping(value = "listall")
+	@GetMapping
 	public ResponseEntity<?> affiliatesList() {
 		List<Affiliate> affiliatesFound = this.affiliatesServiceImple.getList();
 		if (affiliatesFound.isEmpty()) {
@@ -44,7 +44,7 @@ public class AffiliatesController {
 		}
 	}
 
-	@GetMapping(value = "getone/{id}")
+	@GetMapping(value = "{id}")
 	public ResponseEntity<?> objbyid(@PathVariable Long id) {
 		try {
 			Affiliate elembyid = this.affiliatesServiceImple.getById(id);
@@ -57,7 +57,7 @@ public class AffiliatesController {
 		}
 	}
 
-	@PostMapping(value = "add")
+	@PostMapping
 	public ResponseEntity<?> postAffiliate(@RequestBody Affiliate affiliate) {
 		try {
 			Affiliate affiliateSaved = this.affiliatesServiceImple.post(affiliate);
@@ -67,8 +67,7 @@ public class AffiliatesController {
 		}
 	}
 
-	@PutMapping(value = "update")
-
+	@PutMapping
 	public ResponseEntity<?> putAffiliate(@RequestBody Affiliate affiliate) {
 
 		Optional<Affiliate> testUpdated = this.affiliatesServiceImple.put(affiliate);
@@ -79,7 +78,7 @@ public class AffiliatesController {
 		}
 	}
 
-	@DeleteMapping(value = "delete/{id}")
+	@DeleteMapping(value = "{id}")
 	public ResponseEntity<?> deleteAffiliate(@PathVariable Long id) {
 		try {
 			this.affiliatesServiceImple.delete(id);
